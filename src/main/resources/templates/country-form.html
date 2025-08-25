@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Country Form</title>
+</head>
+<body>
+<h1 th:text="${country.id} != null ? 'Edit Country' : 'Add Country'">Country Form</h1>
+<form th:action="${country.id} != null ? @{'/countries/update/' + ${country.id}} : @{/countries}" th:object="${country}" method="post">
+    <label for="countryName">Name:</label>
+    <input type="text" id="countryName" th:field="*{countryName}" />
+    <button type="submit">Save</button>
+</form>
+<a th:href="@{/countries}">Back to list</a>
+</body>
+</html>
